@@ -1,5 +1,4 @@
 def main():
-    # Requirement 1: Set up Turtle window and turtle
     screen = turtle.Screen()
     screen.setup(450, 450)
     screen.title("TurtleDraw_kf")
@@ -7,8 +6,7 @@ def main():
     t = turtle.Turtle()
     t.speed(0)  # Maximum speed
     
-    # Requirement 2: Ask for input file and read it
-    filename = input("Enter input file name: ")
+    filename = input("TurtleDraw_KF.py")
     
     total_distance = 0.0
     prev_x = None
@@ -24,7 +22,6 @@ def main():
                 
                 parts = line.split()
                 
-                # Requirement 3: Handle drawing commands
                 if parts[0] == 'stop':
                     t.penup()
                 else:
@@ -57,7 +54,6 @@ def main():
         print(f"Error parsing file: {e}")
         return
     
-    # Requirement 4: Print total distance and clean up
     t.penup()
     t.goto(180, -200)  # Bottom right area
     t.write(f"Total distance: {total_distance:.2f}", align="right", font=("Arial", 12, "normal"))
