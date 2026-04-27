@@ -1,12 +1,15 @@
+import turtle
+import math
+
 def main():
     screen = turtle.Screen()
     screen.setup(450, 450)
     screen.title("TurtleDraw_kf")
     
     t = turtle.Turtle()
-    t.speed(0)  # Maximum speed
+    t.speed(0)
     
-    filename = input("TurtleDraw_KF.py")
+    filename = input("Enter filename: ")
     
     total_distance = 0.0
     prev_x = None
@@ -24,6 +27,8 @@ def main():
                 
                 if parts[0] == 'stop':
                     t.penup()
+                    prev_x = None
+                    prev_y = None
                 else:
                     color = parts[0]
                     x = int(parts[1])
@@ -32,13 +37,11 @@ def main():
                     t.pencolor(color)
                     
                     if first_point:
-                        # Move to first point without drawing
                         t.penup()
                         t.goto(x, y)
                         t.pendown()
                         first_point = False
                     else:
-                        # Calculate distance for connected points
                         if prev_x is not None:
                             distance = math.sqrt((x - prev_x)**2 + (y - prev_y)**2)
                             total_distance += distance
@@ -55,7 +58,7 @@ def main():
         return
     
     t.penup()
-    t.goto(180, -200)  # Bottom right area
+    t.goto(180, -200)
     t.write(f"Total distance: {total_distance:.2f}", align="right", font=("Arial", 12, "normal"))
     
     input("Press enter to exit")
